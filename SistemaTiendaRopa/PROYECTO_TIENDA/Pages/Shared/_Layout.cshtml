@@ -10,17 +10,19 @@
 </head>
 <body>
     <header class="header">
-        AppMain
+        Tienda "EL HERMANO"
     </header>
     <nav class="nav1">
-       <partial name="_LoginPartial" />         
+        @*<img src="./Image/home-icon-silhouette.png" class="icon"/>*@ <a href="~/Index">Inicio</a>
+        @*<img src="/Image/almacen.png" class="icon"/>*@ <a href="~/Index">Almacen</a>
+        @*<img src="~/Image/bolsa-de-la-compra.png" class="icon"/>*@ <a href="~/Catalogos/Catmanage">Compra</a>
+        @*<img src="~/Image/catalogo.png" class="icon"/>*@ <a href="~/Catalogos/CatView">Categoria</a>
+        @*<img src="~/Image/cupon.png" class="icon"/>*@ <a href="~/Index">Ventas</a>
+        <a href="~/Catalogos/Catmanage">Mantenimiento</a>
+
+        <partial name="_LoginPartial" />
     </nav>
-    <aside class="AppAside">
-        <nav class="nav2">
-            <a href="~/Index">Inicio</a>
-            <a href="~/Catalogos/Catmanage">Catalogos</a>
-        </nav>
-    </aside>
+   
     <main class="AppMain">
         @RenderBody()
     </main>

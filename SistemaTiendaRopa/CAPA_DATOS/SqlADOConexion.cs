@@ -12,8 +12,7 @@ namespace CAPA_DATOS
         {
             try
             {
-                UserSQLConexion = "Data Source=DESKTOP-2GLH51Q\\SQLEXPRESS; Initial Catalog=BDGestionAcademica; User ID="
-                    + user + ";Password=" + password;
+                UserSQLConexion = "Data Source=DESKTOP-4J0DSK9;Initial Catalog=PRACTICAS;Persist Security Info=True;User ID=sa;Password=1234";
                 SQLM = new SqlServerGDatos(UserSQLConexion);
                 return true;
             }

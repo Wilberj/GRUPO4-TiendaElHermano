@@ -1,0 +1,57 @@
+﻿@page
+@model PROYECTO_TIENDA.Pages.Catalogos.CatViewModel
+@{
+}
+<script>
+    window.onload = () => {
+        BtnSave.onclick = async () => {
+            const ObjInst = {
+                Nombre: TxtNombre.value,
+                Descripcion: TxtDescripcion.value,
+                Estado: DropEstado.text
+            }
+            let Url = "../api/Values/SaveCategoria";
+            let response = await fetch(Url, {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json; charset=utf-8",
+                    'Accept': "*/*"
+                },
+                body: JSON.stringify(ObjInst)
+            });
+        } 
+    }
+</script>
+
+<div class="FrmContainer">
+    <div>
+        Nombre:
+        <input class="TxtForm" type="text" id="TxtNombre" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Descripcion:
+        <input class="TxtForm" type="text" id="TxtDescripcion" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Estado:
+        <select class="TxtForm" id="DropEstado">
+            <option value="ACT">Activo</option>
+            <option value="INAC">Inactivo</option>
+        </select>
+    </div>
+</div>
+@* Seran las cajas "botones" *@
+<div class="FrmContainer">
+    <div>
+        <input class="BTN BTNOK2" type="button" id="BtnSave" value="Guardar" />
+    </div>
+</div>
+
+
+@* Tabla estatica de ejemplo, tiene que ser dinamica" *@
+<table id= "TableData" class= "FrmTable">
+    <thead>
+    </thead>
+    <tbody>
+    </tbody>
+</table>

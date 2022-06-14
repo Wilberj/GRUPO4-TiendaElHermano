@@ -17,7 +17,7 @@ namespace CAPA_DATOS
         public object ExcuteSqlQuery(string strQuery)
         {
             try
-            {              
+            {
                 SQLMCon.Open();
                 var com = ComandoSql(strQuery, SQLMCon);
                 var scalar = com.ExecuteScalar();
@@ -44,7 +44,8 @@ namespace CAPA_DATOS
                 string Values = "";
                 Type _type = Inst.GetType();
                 PropertyInfo[] lst = _type.GetProperties();
-                foreach (PropertyInfo oProperty in lst) {
+                foreach (PropertyInfo oProperty in lst)
+                {
                     string AtributeName = oProperty.Name;
                     var AtributeValue = oProperty.GetValue(Inst);
                     if (AtributeValue == null)
@@ -72,9 +73,10 @@ namespace CAPA_DATOS
                 }
                 ColumnNames = ColumnNames.TrimEnd(',');
                 Values = Values.TrimEnd(',');
-                string strQuery = "INSERT INTO " + TableName 
-                    + "("+ ColumnNames + ") VALUES(" 
-                    + Values + ") SELECT SCOPE_IDENTITY()";                
+                string strQuery = "INSERT INTO " + TableName
+                    + "(" + ColumnNames + ") VALUES("
+                    + Values + ") SELECT SCOPE_IDENTITY()";
+                //string strQuery = "INSERT INTO " + TableName + "VALUES (" + Values + ")";
                 return ExcuteSqlQuery(strQuery);
             }
             catch (Exception)
@@ -100,7 +102,7 @@ namespace CAPA_DATOS
                         {
                             continue;
                         }
-                        else if(AtributeValue.GetType() == typeof(string) || AtributeValue.GetType() == typeof(DateTime))
+                        else if (AtributeValue.GetType() == typeof(string) || AtributeValue.GetType() == typeof(DateTime))
                         {
                             Values = Values + AtributeName + "= '" + AtributeValue.ToString() + "',";
                         }
@@ -108,14 +110,15 @@ namespace CAPA_DATOS
                         {
                             Values = Values + AtributeName + "=" + AtributeValue.ToString() + ",";
                         }
-                    } else
+                    }
+                    else
                     {
                         prop = oProperty;
                     }
-                   
-                }              
+
+                }
                 Values = Values.TrimEnd(',');
-                string strQuery = "UPDATE  " + 
+                string strQuery = "UPDATE  " +
                     TableName + " SET " +
                     Values + " WHERE " + IdObject + " = " + prop.GetValue(Inst).ToString();
                 return ExcuteSqlQuery(strQuery);
@@ -170,11 +173,11 @@ namespace CAPA_DATOS
                     int i = 0;
                     foreach (var param in Params)
                     {
-                        var p = (SqlParameter)Command.Parameters[i+1];
+                        var p = (SqlParameter)Command.Parameters[i + 1];
                         p.Value = param;
                         i++;
                     }
-                }               
+                }
                 DataTable Table = TraerDatosSQL(Command);
                 List<Object> ListD = ConvertDataTable(Table, Inst);
                 return ListD;
@@ -184,7 +187,8 @@ namespace CAPA_DATOS
                 throw;
             }
         }
-        private static List<Object> ConvertDataTable(DataTable dt, Object Inst) {
+        private static List<Object> ConvertDataTable(DataTable dt, Object Inst)
+        {
             List<Object> data = new List<Object>();
             foreach (DataRow row in dt.Rows)
             {
@@ -209,5 +213,5 @@ namespace CAPA_DATOS
             }
             return obj;
         }
-     }
+    }
 }
