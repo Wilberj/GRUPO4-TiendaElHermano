@@ -4,28 +4,28 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+
 using CAPA_NEGOCIO;
 
 namespace PROYECTO_TIENDA.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ValuesControllerMarca : ControllerBase
     {
         [HttpPost]
-
-        public object SaveCategoria(object ObjInst)
+        public object SaveMarca(object ObjInst)
         {
-            NCategorias Inst = JsonConvert.DeserializeObject<NCategorias>(ObjInst.ToString());
+            NMarca Inst = JsonConvert.DeserializeObject<NMarca>(ObjInst.ToString());
             Inst.Save(Inst);
             return true;
         }
+
         [HttpPost]
-        public object GetCategoria()
+        public object GetMarca()
         {
-            NCategorias Inst = new NCategorias();
-            return Inst.GetCategoria(Inst);
+            NMarca Inst = new NMarca();
+            return Inst.GetMarca(Inst);
         }
     }
 }

@@ -84,60 +84,10 @@ namespace CAPA_DATOS
                 throw;
             }
         }
-        public Object UpdateObject(string TableName, Object Inst, string IdObject)
-        {
-            try
-            {
-                string Values = "";
-                Type _type = Inst.GetType();
-                PropertyInfo[] lst = _type.GetProperties();
-                PropertyInfo prop = lst[0];
-                foreach (PropertyInfo oProperty in lst)
-                {
-                    string AtributeName = oProperty.Name;
-                    var AtributeValue = oProperty.GetValue(Inst);
-                    if (AtributeName != IdObject)
-                    {
-                        if (AtributeValue == null)
-                        {
-                            continue;
-                        }
-                        else if (AtributeValue.GetType() == typeof(string) || AtributeValue.GetType() == typeof(DateTime))
-                        {
-                            Values = Values + AtributeName + "= '" + AtributeValue.ToString() + "',";
-                        }
-                        else
-                        {
-                            Values = Values + AtributeName + "=" + AtributeValue.ToString() + ",";
-                        }
-                    }
-                    else
-                    {
-                        prop = oProperty;
-                    }
-
-                }
-                Values = Values.TrimEnd(',');
-                string strQuery = "UPDATE  " +
-                    TableName + " SET " +
-                    Values + " WHERE " + IdObject + " = " + prop.GetValue(Inst).ToString();
-                return ExcuteSqlQuery(strQuery);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
         public DataTable TraerDatosSQL(string queryString)
         {
             DataSet ObjDS = new DataSet();
             CrearDataAdapterSql(queryString, SQLMCon).Fill(ObjDS);
-            return ObjDS.Tables[0].Copy();
-        }
-        public DataTable TraerDatosSQL(IDbCommand Command)
-        {
-            DataSet ObjDS = new DataSet();
-            CrearDataAdapterSql(Command).Fill(ObjDS);
             return ObjDS.Tables[0].Copy();
         }
         public Object TakeList(string TableName, Object Inst, string? Condicion)
@@ -151,34 +101,6 @@ namespace CAPA_DATOS
                 }
                 string queryString = "SELECT * FROM " + TableName + CondicionString;
                 DataTable Table = TraerDatosSQL(queryString);
-                List<Object> ListD = ConvertDataTable(Table, Inst);
-                return ListD;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public Object TakeListWithProcedure(string ProcedureName, Object Inst, List<Object> Params)
-        {
-            try
-            {
-                SQLMCon.Open();
-                var Command = ComandoSql(ProcedureName, SQLMCon);
-                Command.CommandType = CommandType.StoredProcedure;
-                SqlCommandBuilder.DeriveParameters((SqlCommand)Command);
-                SQLMCon.Close();
-                if (Params.Count != 0)
-                {
-                    int i = 0;
-                    foreach (var param in Params)
-                    {
-                        var p = (SqlParameter)Command.Parameters[i + 1];
-                        p.Value = param;
-                        i++;
-                    }
-                }
-                DataTable Table = TraerDatosSQL(Command);
                 List<Object> ListD = ConvertDataTable(Table, Inst);
                 return ListD;
             }

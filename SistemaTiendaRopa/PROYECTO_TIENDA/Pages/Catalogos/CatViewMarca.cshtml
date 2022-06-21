@@ -1,11 +1,11 @@
 ﻿@page
-@model PROYECTO_TIENDA.Pages.Catalogos.CatViewModel
+@model PROYECTO_TIENDA.Pages.Catalogos.CatViewMarcaModel
 @{
 }
 <script type="module">
     import CreateTable from "../js/TableComponent.js";
     const CargarDatos = async () => {
-        let UrlP = "../api/Values/GetCategoria";
+        let UrlP = "../api/ValuesControllerMarca/GetMarca";
         let response = await fetch(UrlP, {
             method: "POST",
             headers: {
@@ -20,11 +20,13 @@
     window.onload = async () => {
         BtnSave.onclick = async () => {
             const ObjInst = {
-                Nombre: TxtNombre.value,
-                Descripcion: TxtDescripcion.value,
-                Estado: DropEstado.text
+                /*IdMarca: TxtIdMarca.value,*/
+                Marca: TxtMarca.value,
+                Descripcion: TxtDescripcionMarca.value,
+               /* crear condicion o poner valores numericos en la lista*/
+                Estado: DropEstado.value
             }
-            let Url = "../api/Values/SaveCategoria";
+            let Url = "../api/ValuesControllerMarca/SaveMarca";
             let response = await fetch(Url, {
                 method: "POST",
                 headers: {
@@ -37,27 +39,26 @@
             if (response == true) {
                 alert("Datos Guardados");
                 CargarDatos();
-            }
+            }           
         }
         //Cargar Categorias
         CargarDatos();
     }
 </script>
-
 <div class="FrmContainer">
     <div>
-        Nombre:
-        <input class="TxtForm" type="text" id="TxtNombre" placeholder="Propiedad..." />
+        Marca:
+        <input class="TxtForm" type="text" id="TxtMarca" placeholder="Propiedad..." />
     </div>
     <div>
         Descripcion:
-        <input class="TxtForm" type="text" id="TxtDescripcion" placeholder="Propiedad..." />
+        <input class="TxtForm" type="text" id="TxtDescripcionMarca" placeholder="Propiedad..." />
     </div>
     <div>
         Estado:
         <select class="TxtForm" id="DropEstado">
-            <option value="ACT">Activo</option>
-            <option value="INAC">Inactivo</option>
+            <option value=1>Activo</option>
+            <option value=2>Inactivo</option>
         </select>
     </div>
 </div>

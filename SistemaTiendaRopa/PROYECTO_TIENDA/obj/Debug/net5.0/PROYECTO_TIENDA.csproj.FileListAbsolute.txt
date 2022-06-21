@@ -352,3 +352,4 @@ C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\ref\PROYECTO_TIENDA.dll
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\PROYECTO_TIENDA.pdb
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\PROYECTO_TIENDA.genruntimeconfig.cache
+C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewMarca.cshtml.g.cs

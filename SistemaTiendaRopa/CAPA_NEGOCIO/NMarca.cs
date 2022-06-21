@@ -7,15 +7,14 @@ using CAPA_DATOS;
 
 namespace CAPA_NEGOCIO
 {
-    public class NCategorias
+    public class NMarca
     {
-        private string TableName = "CATEGORIA";
-        public string Nombre { get; set; }
+        private string TableName = "MARCA";
+        public string Marca { get; set; } 
         public string Descripcion { get; set; }
         public int Estado { get; set; }
 
-
-        public Object Save(NCategorias Inst)
+        public Object Save(NMarca Inst)
         {
             try
             {
@@ -27,7 +26,7 @@ namespace CAPA_NEGOCIO
                 throw;
             }
         }
-        public Object GetCategoria(NCategorias Inst)
+        public Object GetMarca(NMarca Inst)
         {
             try
             {
@@ -39,6 +38,5 @@ namespace CAPA_NEGOCIO
                 throw;
             }
         }
-
     }
 }
