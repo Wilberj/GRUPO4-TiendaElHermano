@@ -84,6 +84,46 @@ namespace CAPA_DATOS
                 throw;
             }
         }
+        public Object UpdateObject(string TableName, Object Inst, string IdObject)
+        {
+            try
+            {
+                string Values = "";
+                Type _type = Inst.GetType();
+                PropertyInfo[] lst = _type.GetProperties();
+                PropertyInfo prop = lst[0];
+                foreach (PropertyInfo oProperty in lst)
+                {
+                    string AtributeName = oProperty.Name;
+                    var AtributeValue = oProperty.GetValue(Inst);
+                    if (AtributeName != IdObject)
+                    {
+                       if (AtributeValue.GetType() == typeof(string) || AtributeValue.GetType() == typeof(DateTime))
+                        {
+                            Values = Values + AtributeName + "= '" + AtributeValue.ToString() + "',";
+                        }
+                        else
+                        {
+                            Values = Values + AtributeName + "=" + AtributeValue.ToString() + ",";
+                        }
+                    }
+                    else
+                    {
+                        prop = oProperty;
+                    }
+
+                }
+                Values = Values.TrimEnd(',');
+                string strQuery = "UPDATE  " +
+                    TableName + " SET " +
+                    Values + " WHERE " + IdObject + " = " + prop.GetValue(Inst).ToString();
+                return ExcuteSqlQuery(strQuery);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public DataTable TraerDatosSQL(string queryString)
         {
             DataSet ObjDS = new DataSet();

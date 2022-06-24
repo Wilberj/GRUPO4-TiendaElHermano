@@ -353,3 +353,7 @@ C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\PROYECTO_TIENDA.pdb
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\PROYECTO_TIENDA.genruntimeconfig.cache
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewMarca.cshtml.g.cs
+C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewClientes.cshtml.g.cs
+C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewProducto.cshtml.g.cs
+C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewTalla.cshtml.g.cs
+C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewUsuario.cshtml.g.cs
