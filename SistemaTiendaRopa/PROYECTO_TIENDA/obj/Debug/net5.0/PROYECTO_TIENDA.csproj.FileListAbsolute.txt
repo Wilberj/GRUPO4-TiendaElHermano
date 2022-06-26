@@ -353,6 +353,7 @@ C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\PROYECTO_TIENDA.pdb
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\PROYECTO_TIENDA.genruntimeconfig.cache
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewMarca.cshtml.g.cs
+<<<<<<< HEAD
 C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\PROYECTO_TIENDA.dll
 C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\ref\PROYECTO_TIENDA.dll
 C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\PROYECTO_TIENDA.pdb
@@ -451,3 +452,15 @@ C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA
 C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\PROYECTO_TIENDA.Views.pdb
 C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\PROYECTO_TIENDA.csproj.CopyComplete
 C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\PROYECTO_TIENDA.genruntimeconfig.cache
+=======
+C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewClientes.cshtml.g.cs
+C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewProducto.cshtml.g.cs
+C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewTalla.cshtml.g.cs
+C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewUsuario.cshtml.g.cs
+>>>>>>> c34524f6101a236aec47d634c155ad8e9cea7901
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewClientes.cshtml.g.cs
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewProducto.cshtml.g.cs
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewTalla.cshtml.g.cs
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewUsuario.cshtml.g.cs
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CompraView.cshtml.g.cs
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\ProveedoresView.cshtml.g.cs

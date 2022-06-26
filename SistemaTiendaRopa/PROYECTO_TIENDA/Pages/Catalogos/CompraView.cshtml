@@ -1,0 +1,181 @@
+﻿@page
+@model PROYECTO_TIENDA.Pages.Catalogos.CatManageModel
+@{
+
+}
+<script type="module">
+    import CreateTable from '../js/TableComponent.js';
+    import CreateDropDown from '../js/DropDownComponent.js';
+    //const Detalle = [];
+
+    const CargarDatos = async () => {
+        let UrlCompra = "../api/Compra/VerCompra";
+        let response = await fetch(UrlCompra, {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8",
+                'Accept': "*/*"
+            }
+        });
+        response = await response.json();
+        console.log(response);
+        CreateTable(response[0], TableData, FunctionEdit);
+        CreateDropDown(response[1], DropUsuario, "IdUsuario", "nombres")
+        CreateDropDown(response[2], DropProveedor, "IdProveedor", "nombres")
+
+
+    }
+
+    const FunctionEdit = async (Item) => {
+
+    }
+
+    window.onload = async () => {
+        //BtnSave.onclick = async () => {
+        //    const ObjInst = {
+        //        //IdCompra: TxtIdProveedor.value,
+        //        Descripcion: Txtdescripcion.value,
+        //        Fecha: Txtfecha.value,
+        //        Proveedor: DropProveedor.value,
+        //        Usuario: DropUsuario.value,
+        //        Estado: DropEstado.value,
+        //       // DetallesCompra=Detalle
+
+
+        //    }
+        //    let Url = "../api/Proveedor/InsertarProveedores";
+        //    let response = await fetch(Url, {
+        //        method: "POST",
+        //        headers: {
+        //            'Content-Type': "application/json; charset=utf-8",
+        //            'Accept': "*/*"
+        //        },
+        //        body: JSON.stringify(ObjInst)
+        //    });
+        //    response = await response.json();
+        //    if (response == true) {
+        //        alert("Datos Guardados");
+        //        CargarDatos();
+        //    }
+        //}
+        CargarDatos();
+        BtnModalDetalles.onclick = () => {
+            ModalFunction(ModalDetalles);
+        }
+
+        BtnCerrar.onclick = () => {
+            ModalFunction(ModalDetalles);
+        }
+
+    }
+</script>
+
+<div class="buscar">
+
+    <input type="number" id="TxtBusqueda" value="" placeholder="Buscar" />
+</div>
+<div class="FrmContainer">
+
+    <div hidden="true">
+        IdCompra:
+        <input class="TxtForm" type="number" id="Txtidproveedor" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Fecha:
+        <input class="TxtForm" type="date" id="Txtfecha" placeholder="Propiedad..." />
+    </div>
+
+    <div>
+        Descripcion:
+        <input class="TxtForm" type="text" id="Txtdescripcion" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Usuario:
+        <select class="TxtForm" id="DropUsuario">
+            <option value="0">Seleccionar Usuario</option>
+        </select>
+    </div>
+    <div>
+        Proveedor:
+        <select class="TxtForm" id="DropProveedor">
+            <option value="0">Seleccionar Proveedor</option>
+        </select>
+    </div>
+    <div>
+        Estado:
+        <select class="TxtForm" id="DropEstado">
+            <option value="0">Seleccionar estado</option>
+        </select>
+    </div>
+</div>
+<div class="FrmContainer">
+    <div>
+        <input class="BTN BTNOK2" type="button" id="BtnSave" value="Guardar" />
+        <input class="BTN BTNOK2" type="button" id="BtnModalDetalles" value="Insertar Detalle" />
+    </div>
+</div>
+
+<table id="TableData" class="FrmTable">
+    <thead>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<div id="ModalDetalles" class="ModalContent">
+    <div class="FrmContainer" id="ContainerForm">
+
+        <div hidden="true">
+            IdDetalleCompra:
+            <input class="TxtForm" type="number" id="Txtidproveedor" placeholder="Propiedad..." />
+        </div>
+        <div>
+            Compra:
+            <input class="TxtForm" type="number" id="Txtfecha" placeholder="Propiedad..." />
+        </div>
+        <div>
+            Producto:
+            <select class="TxtForm" id="DropProducto">
+                <option value="0">Seleccionar Producto</option>
+            </select>
+        </div>
+
+        <div>
+            Cantidad:
+            <input class="TxtForm" type="text" id="Txtdescripcion" placeholder="Propiedad..." />
+        </div>
+
+        <div>
+            Medida:
+            <input class="TxtForm" type="text" id="Txtmedida" placeholder="Propiedad..." />
+        </div>
+
+        <div>
+            Precio:
+            <input class="TxtForm" type="number" id="Txtprecio" placeholder="Propiedad..." />
+        </div>
+
+        <div>
+            Subtotal:
+            <input class="TxtForm" type="number" id="Txtsubtotal" placeholder="Propiedad..." />
+        </div>
+
+        <div>
+            IVA:
+            <input class="TxtForm" type="number" id="Txtiva" placeholder="Propiedad..." />
+        </div>
+
+        <div>
+            Total:
+            <input class="TxtForm" type="number" id="Txttotal" placeholder="Propiedad..." />
+        </div>
+
+    </div>
+    <div class="FrmContainer">
+        <div>
+            <input class="BTN BTNOK2" type="button" id="BtnSaveD" value="Guardar" />
+            <input class="BTN BTNOK2" type="button" id="BtnCerrar" value="Cerrar" />
+        </div>
+    </div>
+
+</div>

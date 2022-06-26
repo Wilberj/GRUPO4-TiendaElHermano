@@ -1,0 +1,108 @@
+﻿@page
+@model PROYECTO_TIENDA.Pages.Catalogos.CatViewUsuarioModel
+@{
+}
+<script type="module">
+    import CreateTable from "../js/TableComponent.js";
+    const CargarDatos = async () => {
+        let UrlP = "../api/ValuesControllerUsuarios/GetUsuarios";
+        let response = await fetch(UrlP, {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8",
+                'Accept': "*/*"
+            }
+        });
+        response = await response.json();
+        console.log(response);
+        CreateTable(response, TableData);
+    }
+    window.onload = async () => {
+        BtnSave.onclick = async () => {
+            const ObjInst = {
+                Nombres: TxtNombres.value,
+                Apellidos: TxtApellidos.value,
+                Celular: TxtCelular.value,
+                TipoDocumento: DropIdTipoDocumento.value,
+                NumeroDocumento: TxtNumeroDocumento.value,
+                Usuario: TxtUsuario.value,
+                Contrasena: TxtContraseña.value,
+                Rol: TxtRol.value,
+                Estado: DropEstado.value
+            }
+            let Url = "../api/ValuesControllerUsuarios/SaveUsuarios";
+            let response = await fetch(Url, {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json; charset=utf-8",
+                    'Accept': "*/*"
+                },
+                body: JSON.stringify(ObjInst)
+            });
+            response = await response.json();
+            if (response == true) {
+                alert("Datos Guardados");
+                CargarDatos();
+            }
+        }
+        //Cargar Categorias
+        CargarDatos();
+    }
+</script>
+
+<div class="FrmContainer">
+    <div>
+        Nombres:
+        <input class="TxtForm" type="text" id="TxtNombres" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Apellidos:
+        <input class="TxtForm" type="text" id="TxtApellidos" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Celular:
+        <input class="TxtForm" type="text" id="TxtCelular" placeholder="Propiedad..." />
+    </div>
+    <div>
+        TipoDocumento:
+        <select class="TxtForm" id="DropIdTipoDocumento">
+            <option value=1>Cedula</option>
+            <option value=2>Residencia</option>
+            <option value=3>RUC</option>
+        </select>
+    </div>
+    <div>
+        NumeroDocumento:
+        <input class="TxtForm" type="text" id="TxtNumeroDocumento" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Usuario:
+        <input class="TxtForm" type="text" id="TxtUsuario" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Contraseña:
+        <input class="TxtForm" type="text" id="TxtContraseña" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Rol:
+        <input class="TxtForm" type="text" id="TxtRol" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Estado:
+        <select class="TxtForm" id="DropEstado">
+            <option value=1>Activo</option>
+            <option value=2>Inactivo</option>
+        </select>
+    </div>
+</div>
+<div class="FrmContainer">
+    <div>
+        <input class="BTN BTNOK2" type="button" id="BtnSave" value="Guardar" />
+    </div>
+</div>
+<table id="TableData" class="FrmTable">
+    <thead>
+    </thead>
+    <tbody>
+    </tbody>
+</table>

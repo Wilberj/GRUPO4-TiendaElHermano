@@ -15,14 +15,20 @@
         });
         response = await response.json();
         console.log(response);
-        CreateTable(response, TableData);
+        CreateTable(response, TableData, FunctionEdit);
+    }
+    const FunctionEdit = async (Item) => {
+        TxtNombre.value = Item.nombre;
+        DropEstado.value = Item.estado;
+        TxtDescripcion.value = Item.descripcion;
     }
     window.onload = async () => {
         BtnSave.onclick = async () => {
             const ObjInst = {
+                txtIdCategoria: '',
                 Nombre: TxtNombre.value,
                 Descripcion: TxtDescripcion.value,
-                Estado: DropEstado.text
+                Estado: DropEstado.value
             }
             let Url = "../api/Values/SaveCategoria";
             let response = await fetch(Url, {
@@ -37,6 +43,8 @@
             if (response == true) {
                 alert("Datos Guardados");
                 CargarDatos();
+                IdCategoria.value = "";
+                TxtDescripcion.value = "";
             }
         }
         //Cargar Categorias
@@ -45,6 +53,10 @@
 </script>
 
 <div class="FrmContainer">
+    <div hidden = "true">
+        IdCategoria:
+        <input class="TxtForm" type="number" id="TxtIdCategoria" value="" />
+    </div>
     <div>
         Nombre:
         <input class="TxtForm" type="text" id="TxtNombre" placeholder="Propiedad..." />
@@ -56,8 +68,8 @@
     <div>
         Estado:
         <select class="TxtForm" id="DropEstado">
-            <option value="ACT">Activo</option>
-            <option value="INAC">Inactivo</option>
+            <option value=1>Activo</option>
+            <option value=2>Inactivo</option>
         </select>
     </div>
 </div>

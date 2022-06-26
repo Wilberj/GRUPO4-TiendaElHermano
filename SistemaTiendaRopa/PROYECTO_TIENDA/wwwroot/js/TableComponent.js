@@ -26,7 +26,8 @@
         btn.className = "BTN BTNOK";
         btn.value = "Edit";
         btn.onclick = () => {
-                console.log(item);
+            //console.log(item);
+            TableFunction(item);
         }
         tdAction.append(btn);
         row.append(tdAction);
