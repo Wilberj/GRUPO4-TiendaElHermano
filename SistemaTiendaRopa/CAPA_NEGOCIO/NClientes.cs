@@ -10,7 +10,7 @@ namespace CAPA_NEGOCIO
    public class NClientes
     {
         private string TableName = "CLIENTES";
-        //public string IdCliente { get; set; }
+        public int IdCliente { get; set; }
         public int IdTipoDocumento { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
@@ -26,7 +26,14 @@ namespace CAPA_NEGOCIO
             try
             {
                 SqlADOConexion.IniciarConexion("sa", "1234");
-                return SqlADOConexion.SQLM.InsertObject(TableName, Inst);
+                if (Inst.IdCliente == -1)
+                {
+                    return SqlADOConexion.SQLM.InsertObject(TableName, Inst);
+                }
+                else
+                {
+                    return SqlADOConexion.SQLM.UpdateObject(TableName, Inst, "IdCliente");
+                }
             }
             catch (Exception)
             {

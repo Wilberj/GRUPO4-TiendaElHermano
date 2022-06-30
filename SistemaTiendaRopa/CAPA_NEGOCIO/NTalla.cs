@@ -10,6 +10,7 @@ namespace CAPA_NEGOCIO
     public class NTalla
     {
         private string TableName = "TALLA";
+        public int IdTalla { get; set; }
         public string Talla { get; set; }
 
         public Object Save(NTalla Inst)
@@ -17,7 +18,14 @@ namespace CAPA_NEGOCIO
             try
             {
                 SqlADOConexion.IniciarConexion("sa", "1234");
-                return SqlADOConexion.SQLM.InsertObject(TableName, Inst);
+                if (Inst.IdTalla == -1)
+                {
+                    return SqlADOConexion.SQLM.InsertObject(TableName, Inst);
+                }
+                else
+                {
+                    return SqlADOConexion.SQLM.UpdateObject(TableName, Inst, "IdTalla");
+                }
             }
             catch (Exception)
             {

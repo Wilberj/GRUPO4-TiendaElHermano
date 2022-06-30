@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\Catalogos\InventarioView.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.17" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.17" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.17" />
@@ -22,15 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Catalogos\InventarioView.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Catalogos\CatViewInventario.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\Catalogos\InventarioView.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\Catalogos\InventarioView.cshtml" />
     <None Include="wwwroot\Image\almacen.png" />
     <None Include="wwwroot\Image\almacen_w.png" />
     <None Include="wwwroot\Image\bolsa-de-la-compra.png" />
@@ -41,6 +32,10 @@
     <None Include="wwwroot\Image\cupon_w.png" />
     <None Include="wwwroot\Image\home-icon-silhouette.png" />
     <None Include="wwwroot\Image\home-icon-silhouette_w.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Catalogos\CatViewInventario.cshtml" />
   </ItemGroup>
 
 </Project>

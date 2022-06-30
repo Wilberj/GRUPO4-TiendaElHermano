@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace PROYECTO_TIENDA.Pages.Catalogos
 {
-    public class InventarioViewModel : PageModel
+    public class CatViewInventarioModel : PageModel
     {
         public void OnGet()
         {

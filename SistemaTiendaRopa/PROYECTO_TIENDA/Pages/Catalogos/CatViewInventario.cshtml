@@ -1,0 +1,152 @@
+﻿@page
+@model PROYECTO_TIENDA.Pages.Catalogos.CatViewInventarioModel
+@{
+}
+<script type="module">
+    import CreateTable from "../js/TableComponent.js";
+    import CreateDropDown from '../js/DropDownComponent.js';
+    const CargarDatos = async () => {
+        let UrlP = "../api/ValuesControllerInventario/TakeDataForInventario";
+        let response = await fetch(UrlP, {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8",
+                'Accept': "*/*"
+            }
+        });
+        response = await response.json();
+        console.log(response);
+        CreateTable(response[0], TableData, FunctionEdit);
+        CreateDropDown(response[1], DropProducto, "idProducto", "nombreProducto");
+        CreateDropDown(response[2], DropMarca, "idMarca", "marca");
+        CreateDropDown(response[3], DropTalla, "idTalla", "talla")
+    }
+    const FunctionEdit = async (Item) => {
+        TxtIdInventario.value = Item.idInventario;
+        DropProducto.value = Item.producto;
+        TxtDateTime.value = Item.fecha;
+        DropMarca.value = Item.marca;
+        DropTalla.value = Item.talla;
+        TxtPrecioCompra.value = Item.precioCompra;
+        TxtMedida.value = Item.unidad_Medida;
+        TxtMinimo.value = Item.stockMinimo;
+        TxtMaximo.value = Item.stockMaximo;
+        TxtActual.value = Item.stockActual;
+    }
+    window.onload = async () => {
+        BtnSave.onclick = async () => {
+            const ObjInst = {
+                IdInventario: TxtIdInventario.value,
+                Producto: DropProducto.value,
+                Fecha: TxtDateTime.value,
+                Marca: DropMarca.value,
+                Talla: DropTalla.value,
+                PrecioCompra: TxtPrecioCompra.value,
+                Unidad_Medida: TxtMedida.value,
+                StockMinimo: TxtMinimo.value,
+                StockMaximo: TxtMaximo.value,
+                StockActual: TxtActual.value
+            }
+
+            let flag = true;
+            for (var prop in ObjInst) {
+                if (ObjInst[prop] == "") {
+                    flag = false;
+                    alert("la propiedad " + prop + " es requerida");
+                    break;
+                }
+            }
+
+            if (!flag) {
+                return;
+            }
+
+            let Url = "../api/ValuesControllerInventario/SaveInventario";
+            let response = await fetch(Url, {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json; charset=utf-8",
+                    'Accept': "*"
+                },
+                body: JSON.stringify(ObjInst)
+            });
+            response = await response.json();
+            if (response == true) {
+                alert("Datos Guardados");
+                window.location.reload();
+                //TxtIdInventario.value = "-1";
+                //DropProducto.value = 0;
+                //DropMarca.value = 0;
+                //DropTalla.value = 0;
+                //TxtPrecioCompra.value = "";
+                //TxtMedida.value = "";
+                //TxtMinimo.value = "";
+                //TxtMaximo.value = "";
+                //TxtActual.value = "";
+            }
+        }
+        CargarDatos();
+    }
+</script>
+<divdiv></divdiv>
+<div class="FrmContainer">
+    <div hidden="true">
+        Id Inventario:
+        <input class="TxtForm" type="number" id="TxtIdInventario" value="-1" />
+    </div>
+    <div>
+        Producto:
+        <select class="TxtForm minimal" id="DropProducto">
+            <option value="0">Seleccionar Producto</option>
+        </select>
+    </div>
+    <div>
+        Fecha:
+        <input class="TxtForm" type="date" id="TxtDateTime" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Marca:
+        <select class="TxtForm minimal" id="DropMarca">
+            <option value="0">Seleccionar Marca</option>
+        </select>
+    </div>
+    <div>
+        Talla:
+        <select class="TxtForm minimal" id="DropTalla">
+            <option value="0">Seleccionar Talla</option>
+        </select>
+    </div>
+    <div>
+        PrecioCompra:
+        <input class="TxtForm" type="text" id="TxtPrecioCompra" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Unidad de medida:
+        <input class="TxtForm" type="text" id="TxtMedida" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Stock minimo:
+        <input class="TxtForm" type="number" id="TxtMinimo" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Stock maximo:
+        <input class="TxtForm" type="number" id="TxtMaximo" placeholder="Propiedad..." />
+    </div>
+    <div>
+        Stock actual:
+        <input class="TxtForm" type="number" id="TxtActual" placeholder="Propiedad..." />
+    </div>
+</div>
+<div class="FrmContainer">
+    <div>
+        <input class="BTN BTNOK2" type="button" id="BtnSave" value="Guardar" />
+    </div>
+</div>
+<table id="TableData" class="FrmTable">
+    <thead>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+

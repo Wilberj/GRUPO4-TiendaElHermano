@@ -15,12 +15,18 @@
         });
         response = await response.json();
         console.log(response);
-        CreateTable(response, TableData);
+        CreateTable(response, TableData, FunctionEdit);
+    }
+    const FunctionEdit = async (Item) => {
+        TxtIdMarca.value = Item.idMarca;
+        TxtMarca.value = Item.marca;
+        TxtDescripcionMarca.value = Item.descripcion;
+        DropEstado.value = Item.estado;
     }
     window.onload = async () => {
         BtnSave.onclick = async () => {
             const ObjInst = {
-                /*IdMarca: TxtIdMarca.value,*/
+                IdMarca: TxtIdMarca.value,
                 Marca: TxtMarca.value,
                 Descripcion: TxtDescripcionMarca.value,
                /* crear condicion o poner valores numericos en la lista*/
@@ -39,6 +45,9 @@
             if (response == true) {
                 alert("Datos Guardados");
                 CargarDatos();
+                TxtIdMarca.value = "-1";
+                TxtMarca.value = "";
+                TxtDescripcionMarca.value = "";
             }           
         }
         //Cargar Categorias
@@ -46,6 +55,10 @@
     }
 </script>
 <div class="FrmContainer">
+    <div hidden="true">
+        Id Marca:
+        <input class="TxtForm" type="number" id="TxtIdMarca" value="-1" />
+    </div>
     <div>
         Marca:
         <input class="TxtForm" type="text" id="TxtMarca" placeholder="Propiedad..." />

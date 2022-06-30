@@ -26,6 +26,16 @@ namespace PROYECTO_TIENDA.Controllers
             NProducto Inst = new NProducto();
             return Inst.GetProducto(Inst);
         }
-
+        //Añadi nuevo
+        [HttpPost]
+        public object TakeDataForCategoria()
+        {
+            List<object> Response = new List<object>();
+            NProducto Pro = new NProducto();
+            Response.Add(Pro.GetProducto(Pro));
+            NCategorias Cat = new NCategorias();
+            Response.Add(Cat.GetCategoria(Cat));
+            return Response;
+        }
     }
 }

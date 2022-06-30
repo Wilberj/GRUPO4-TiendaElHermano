@@ -357,3 +357,4 @@ C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewProducto.cshtml.g.cs
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewTalla.cshtml.g.cs
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewUsuario.cshtml.g.cs
+C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\PROYECTO_TIENDA\obj\Debug\net5.0\Razor\Pages\Catalogos\CatViewInventario.cshtml.g.cs

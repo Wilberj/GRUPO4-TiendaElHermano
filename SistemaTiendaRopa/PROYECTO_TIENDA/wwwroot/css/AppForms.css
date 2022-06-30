@@ -34,43 +34,79 @@
     grid-column-gap: 25px;
     margin: 30px;
     padding: 20px;
-    box-shadow: 0 2px 2px 2px rgba(0,0,0,2);
+    box-shadow: 1.95px 1.95px 1.95px 2.6px rgba(0,0,0,0.3);
     border-radius: 0.5cm;
 }
 
+
 .TxtForm {
     width: calc(100% - 20px);
-    padding: 10px;
-    border-radius: 0.2cm;
-    border: none;
-    box-shadow: 0 0px 2px 1px rgba(0,0,0,2);
+    border: 1px solid rgba(0,0,0,0.4);
+    border-radius: 4px;
+    padding: 8px;
+    transition: 180ms box-shadow ease-in-out;
+    margin: 15px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+    .TxtForm:focus {
+        outline: none;
+        box-shadow: 1.6px 1.6px 1.6px 2.3px rgba(0,0,0,0.3);
+    }
+
+.minimal {
+    background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+    background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+    background-size: 5px 5px, 5px 5px, 1px 1.5em;
+    background-repeat: no-repeat;
+}
+
+    .minimal:focus {
+        background-image: linear-gradient(45deg, green 50%, transparent 50%), linear-gradient(135deg, transparent 50%, green 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 15px) 1em, calc(100% - 20px) 1em, calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+        border-color: green;
+        outline: 0;
+    }
+
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
 }
 
 .FrmTable {
     width: 100%;
-    box-shadow: 0 0px 2px 1px rgba(0,0,0,2);
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 0px;
+    box-shadow: 2px 2px 2px 2.9px rgba(0,0,0,0.3);
+    border-collapse: collapse;
 }
 
     .FrmTable th {
-        color: #D5DDE5;
-        background: #1b1e24;
-        border-bottom: 4px solid #9ea7af;
-        border-right: 1px solid #343a45;
-        font-size: 14px;
-        font-weight: 100;
-        padding: 10px;
+        color: white;
+        background-color: #04AA6D;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 12px;
         text-align: left;
         vertical-align: middle;
+        text-transform: capitalize;
         margin: 0px;
+        border: 1px solid #ddd;
     }
 
     .FrmTable td {
         padding: 18px;
+        border: 1px solid #ddd;
     }
 
-    .FrmTable tr:nth-child(odd) td {
-        background: #EBEBEB;
+    .FrmTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .FrmTable tr:hover {
+        background-color: #ddd;
     }

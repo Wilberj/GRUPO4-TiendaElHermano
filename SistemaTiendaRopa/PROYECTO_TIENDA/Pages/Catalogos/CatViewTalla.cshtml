@@ -15,11 +15,16 @@
         });
         response = await response.json();
         console.log(response);
-        CreateTable(response, TableData);
+        CreateTable(response, TableData, FunctionEdit);
+    }
+    const FunctionEdit = async (Item) => {
+        TxtIdTalla.value = Item.idTalla;
+        TxtTalla.value = Item.talla;
     }
     window.onload = async () => {
         BtnSave.onclick = async () => {
             const ObjInst = {
+                IdTalla: TxtIdTalla.value,
                 Talla: TxtTalla.value
             }
             let Url = "../api/ValuesControllerTalla/SaveTalla";
@@ -35,12 +40,18 @@
             if (response == true) {
                 alert("Datos Guardados");
                 CargarDatos();
+                TxtIdTalla.value = "-1";
+                TxtTalla.value = "";
             }
         }
         CargarDatos();
     }
 </script>
 <div class="FrmContainer">
+    <div hidden="true">
+        Id Talla:
+        <input class="TxtForm" type="number" id="TxtIdTalla" value="-1" />
+    </div>
     <div>
         Talla:
         <input class="TxtForm" type="text" id="TxtTalla" placeholder="Propiedad..." />

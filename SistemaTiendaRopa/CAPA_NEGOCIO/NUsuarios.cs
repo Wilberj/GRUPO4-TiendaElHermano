@@ -10,7 +10,7 @@ namespace CAPA_NEGOCIO
     public class NUsuarios
     {
         private string TableName = "USUARIO";
-        //public string IdCliente { get; set; }
+        public int IdUsuario { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public int Celular { get; set; }
@@ -27,7 +27,14 @@ namespace CAPA_NEGOCIO
             try
             {
                 SqlADOConexion.IniciarConexion("sa", "1234");
-                return SqlADOConexion.SQLM.InsertObject(TableName, Inst);
+                if (Inst.IdUsuario == -1)
+                {
+                    return SqlADOConexion.SQLM.InsertObject(TableName, Inst);
+                }
+                else
+                {
+                    return SqlADOConexion.SQLM.UpdateObject(TableName, Inst, "IdUsuario");
+                }
             }
             catch (Exception)
             {

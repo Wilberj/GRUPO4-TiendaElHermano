@@ -15,11 +15,24 @@
         });
         response = await response.json();
         console.log(response);
-        CreateTable(response, TableData);
+        CreateTable(response, TableData, FunctionEdit);
+    }
+    const FunctionEdit = async (Item) => {
+        TxtIdUsuario.value = Item.idUsuario;
+        TxtNombres.value = Item.nombres;
+        TxtApellidos.value = Item.apellidos;
+        TxtCelular.value = Item.celular;
+        DropIdTipoDocumento.value = Item.tipoDocumento;
+        TxtNumeroDocumento.value = Item.numeroDocumento;
+        TxtUsuario.value = Item.usuario;
+        TxtContraseña.value = Item.contrasena;
+        TxtRol.value = Item.rol;
+        DropEstado.value = Item.estado;
     }
     window.onload = async () => {
         BtnSave.onclick = async () => {
             const ObjInst = {
+                IdUsuario: TxtIdUsuario.value,
                 Nombres: TxtNombres.value,
                 Apellidos: TxtApellidos.value,
                 Celular: TxtCelular.value,
@@ -43,6 +56,15 @@
             if (response == true) {
                 alert("Datos Guardados");
                 CargarDatos();
+                TxtIdUsuario.value = "-1";
+                TxtNombres.value = "";
+                TxtApellidos.value = "";
+                TxtCelular.value = "";
+                DropIdTipoDocumento.value = "";
+                TxtNumeroDocumento.value = "";
+                TxtUsuario.value = "";
+                TxtContraseña.value = "";
+                TxtRol.value = "";
             }
         }
         //Cargar Categorias
@@ -51,6 +73,10 @@
 </script>
 
 <div class="FrmContainer">
+    <div hidden="true">
+        Id Usuario:
+        <input class="TxtForm" type="number" id="TxtIdUsuario" value="-1" />
+    </div>
     <div>
         Nombres:
         <input class="TxtForm" type="text" id="TxtNombres" placeholder="Propiedad..." />
