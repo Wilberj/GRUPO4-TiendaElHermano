@@ -1,4 +1,4 @@
-﻿export default function CreateTable(Dataset = [], Table, TableFunction) {
+﻿export default function CreateTable(Dataset = [], Table, TableFunction, BtnValue = "Edit") {
     const thead = Table.querySelector("thead");
     const tbody = Table.querySelector("tbody");
     thead.innerHTML = "";
@@ -24,9 +24,8 @@
         const btn = document.createElement("input");
         btn.type = "button";
         btn.className = "BTN BTNOK";
-        btn.value = "Edit";
+        btn.value = BtnValue;
         btn.onclick = () => {
-            //console.log(item);
             TableFunction(item);
         }
         tdAction.append(btn);
