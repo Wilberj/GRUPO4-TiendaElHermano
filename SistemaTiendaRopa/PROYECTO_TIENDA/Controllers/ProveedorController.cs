@@ -26,8 +26,15 @@ namespace PROYECTO_TIENDA.Controllers
 
         public object TraerProveedores()
         {
+            List<Object> Response = new List<Object>();
             NProveedor Inst = new NProveedor();
-            return Inst.TraerProveedor(Inst);
+            Response.Add(Inst.TraerProveedor(Inst));
+
+
+            TipoDocumento td = new TipoDocumento();
+            Response.Add(td.Mostrar(td));
+
+            return Response;
 
         }
     }

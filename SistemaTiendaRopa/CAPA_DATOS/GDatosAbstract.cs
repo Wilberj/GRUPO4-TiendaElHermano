@@ -139,7 +139,7 @@ namespace CAPA_DATOS
         try
         {
 
-            string Query = "UPDATE INVENTARIO  SET StockActual =" + cant + " WHERE Id =" + id.ToString();
+            string Query = "UPDATE INVENTARIO  SET StockActual =" + cant + " WHERE Producto=" + id.ToString();
             return ExcuteSqlQuery(Query);
         }
         catch (Exception)

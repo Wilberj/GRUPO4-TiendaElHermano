@@ -11,27 +11,27 @@ namespace CAPA_NEGOCIO
     {
         public string TableName = "DETALLECOMPRA";
         public int IdDetalleCompra { get; set; }
-        public int? Compra { get; set; }
+        public int Compra { get; set; }
         public int Producto { get; set; }
-        public decimal Precio { get; set; }
-        public decimal Cantidad { get; set; }
+        public int Precio { get; set; }
+        public int Cantidad { get; set; }
         public string Medida { get; set; }
         public decimal Subtotal { get; set; }
         public decimal IVA { get; set; }
         public decimal Total { get; set; }
 
-        //public Object TraerIdCompra(DetalleCompra Inst)
-        //{
-        //    try
-        //    {
-        //         return SqlADOConexion.SQLM.InsertObject("IdCompra", Inst);
-        //    }
-        //    catch (Exception)
-        //    {
+        public Object TraerIdCompra(DetalleCompra Inst)
+        {
+            try
+            {
+                return SqlADOConexion.SQLM.InsertObject(TableName, Inst);
+            }
+            catch (Exception)
+            {
 
-        //        throw;
-        //    }
-        //}
+                throw;
+            }
+        }
         public Object InsertarDetalle(DetalleCompra Inst)
         {
             try

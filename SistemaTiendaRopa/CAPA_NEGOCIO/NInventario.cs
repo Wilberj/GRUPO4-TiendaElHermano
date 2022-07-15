@@ -40,6 +40,22 @@ namespace CAPA_NEGOCIO
                 throw;
             }
         }
+        public object ActStock(NInventario Inst, int id, int cant)
+        {
+            try
+            {
+                SqlADOConexion.IniciarConexion("sa", "123");
+
+
+                return SqlADOConexion.SQLM.ActualizarStock(cant, Inst, id);
+
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public Object GetInventario(NInventario Inst)
         {
             try

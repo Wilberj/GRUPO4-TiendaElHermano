@@ -10,7 +10,7 @@ namespace CAPA_NEGOCIO
     public class NProveedor
     {
         public string TableName = "PROVEEDORES";
-        //public int IdProveedor { get; set; }
+        public int IdProveedor { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public int TipoDocumento { get; set; }
@@ -24,11 +24,17 @@ namespace CAPA_NEGOCIO
             try
             {
                 SqlADOConexion.IniciarConexion("sa", "1234");
-                return SqlADOConexion.SQLM.InsertObject(TableName, Inst);
+                if (Inst.IdProveedor == -1)
+                {
+                    return SqlADOConexion.SQLM.InsertObject(TableName, Inst);
+                }
+                else
+                {
+                    return SqlADOConexion.SQLM.UpdateObject(TableName, Inst, "IdProveedor");
+                }
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

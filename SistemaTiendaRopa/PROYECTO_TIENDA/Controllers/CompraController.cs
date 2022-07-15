@@ -18,11 +18,9 @@ namespace PROYECTO_TIENDA.Controllers
         public Object VerCompra()
         {
             List<Object> Response = new List<Object>();
+
             Compra Inst = new Compra();
             Response.Add(Inst.TraerCompra(Inst));
-
-            NUsuarios Us = new NUsuarios();
-            Response.Add(Us.GetUsuarios(Us));
 
             NProveedor Prov = new NProveedor();
             Response.Add(Prov.TraerProveedor(Prov));
@@ -30,7 +28,18 @@ namespace PROYECTO_TIENDA.Controllers
             DetalleCompra dt = new DetalleCompra();
             Response.Add(dt.TraerDetalleCompra(dt));
 
+            NInventario i = new NInventario();
+            Response.Add(i.GetInventario(i));
+
             return Response;
+        }
+
+        [HttpPost]
+        public object GuardarCompra(object ObjInst)
+        {
+            Compra Inst = JsonConvert.DeserializeObject<Compra>(ObjInst.ToString());
+            Inst.Insertar(Inst);
+            return true;
         }
 
     }

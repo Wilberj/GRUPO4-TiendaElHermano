@@ -5,6 +5,7 @@
 }
 <script type="module">
     import CreateTable from '../js/TableComponent.js';
+    import CreateDropDown from '../js/DropDownComponent.js';
     const CargarDatos = async () => {
         let UrlPV = "../api/Proveedor/TraerProveedores";
         let response = await fetch(UrlPV, {
@@ -16,12 +17,25 @@
         });
         response = await response.json();
         console.log(response);
-        CreateTable(response, TableData);
+        CreateTable(response[0], TableData, FunctionEdit);
+        CreateDropDown(response[1], DropDocumento, "idDocumento", "documento")
     }
+
+    const FunctionEdit = async (Item) => {
+        TxtIdProveedor.value = Item.idProveedor;
+        TxtNombre.value = Item.nombres;
+        TxtApellido.value = Item.apellidos;
+        DropDocumento.value = Item.tipoDocumento;
+        TxtCelular.value = Item.celular;
+        TxtCorreo.value = Item.correo;
+        TxtDireccion.value = Item.direccion;
+        DropEstado.value = Item.estado;
+    }
+
     window.onload = async () => {
         BtnSave.onclick = async () => {
             const ObjInst = {
-                //IdProveedor: TxtIdProveedor.value,
+                IdProveedor: TxtIdProveedor.value,
                 Nombres: TxtNombre.value,
                 Apellidos: TxtApellido.value,
                 TipoDocumento: DropDocumento.value,
@@ -56,7 +70,7 @@
 
     <div hidden="true">
         Id Proveedor:
-        <input class="TxtForm" type="number" id="TxtIdProveedor" placeholder="Propiedad..." />
+        <input class="TxtForm" type="number" id="TxtIdProveedor" placeholder="Propiedad..." value="-1" />
     </div>
     <div>
         Nombre:
@@ -69,9 +83,8 @@
     <div>
         TipoDocumento:
         <select class="TxtForm" id="DropDocumento">
-            <option value="1">Cedula</option>
-            <option value="2">Residencia</option>
-            <option value="3">Ruc</option>
+            <option value="0">Seleccionar Documento</option>
+
         </select>
     </div>
     <div>

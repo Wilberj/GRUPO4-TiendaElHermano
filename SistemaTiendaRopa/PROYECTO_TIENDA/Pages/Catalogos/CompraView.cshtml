@@ -6,8 +6,24 @@
 <script type="module">
     import CreateTable from '../js/TableComponent.js';
     import CreateDropDown from '../js/DropDownComponent.js';
-    //const Detalle = [];
+    const DetallesCompra = [];
+    let Detalle;
+    let Producto;
 
+    const CargarCompras = async () => {
+        let UrlCompraD = "../api/Compra/TomarCompras";
+        let responseCompra = await fetch(UrlCompraD, {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json; charset=utf-8",
+                'Accept': "*/*"
+            }
+        });
+        responseC = await responseCompra.json();
+        console.log(responseC)
+        CreateTable(responseC, TableData)
+
+    }
     const CargarDatos = async () => {
         let UrlCompra = "../api/Compra/VerCompra";
         let response = await fetch(UrlCompra, {
@@ -18,67 +34,151 @@
             }
         });
         response = await response.json();
+        //CARGAR TODOS LAS LISTAS
         console.log(response);
-        CreateTable(response[0], TableData, FunctionEdit);
-        CreateDropDown(response[1], DropUsuario, "IdUsuario", "nombres")
-        CreateDropDown(response[2], DropProveedor, "IdProveedor", "nombres")
+        //CARGA TABLA COMPRA
+        //CreateTable(response[0], TableData);//tabla compra
 
+        //TRAE PROVEEDOR
+        CreateDropDown(response[1], DropProveedor, "idProveedor", "nombres")
 
+        //TRAE PRODUCTO
+        Producto = response[3];
+        CreateTable(Producto, TableProducto, FunctionSeleccionar, "Seleccionar");
+
+        //TRAER DETALLE
+        Detalle = response[2];
+        CreateTable(Detalle, TableDetalle)
+    }
+    const FunctionSeleccionar = async (Item) => {
+        console.log(Item)
+        Txtproducto.value = Item.producto;
+        Txtprecio.value = Item.precioCompra;
+        ModalFunction(ModalProducto)
+    }
+    //TEXTO DE BUSQUEDA
+    //TxtBusquedaProducto.onchange = (ev) => {
+    //    const parametro = ev.target.value;
+    //    const ProductosFiltrados = Producto.filter(x => x.nombreProducto.includes(parametro));
+    //    CreateTable(ProductosFiltrados, TableProducto, FunctionSeleccionar, "Seleccionar");
+    //}
+
+    Txtprecio.onchange = (ev) => {
+        txtsubtotal.value = Txtcantidad.value * ev.target.value;
+        Txtiva.value = txtsubtotal.value * 0.15;
+        Txttotal.value = parseFloat(txtsubtotal.value) + parseFloat(Txtiva.value);
     }
 
-    const FunctionEdit = async (Item) => {
+    Txtcantidad.onchange = (ev) => {
+        txtsubtotal.value = Txtprecio.value * ev.target.value;
+        Txtiva.value = txtsubtotal.value * 0.15;
+        Txttotal.value = parseFloat(txtsubtotal.value) + parseFloat(Txtiva.value);
+    }
+    //const FunctionEdit = async (Item) => {
+    //    Txtproducto.value = Item.idProducto;
+    //    Txtprecio.value = Item.Cantidad;
+    //    Txtcantidad.value = Item.Precio;
+    //    Txtmedida.value = Item.Medida;
+    //    txtsubtotal.value = Item.Subtotal;
+    //    Txtiva.value = Item.IVA;
+    //    Txttotal.value = Item.Total;
 
+    //}
+    //SALVAR DETALLE COMPRA
+    BtnSaveD.onclick = async (Objdetalle = {}) => {
+
+        const encontrarId = DetallesCompra.find(i => i.Producto == Objdetalle.Producto);
+        if (encontrarId == undefined || encontrarId == null) {
+            Objdetalle = {
+                IdDetalleCompra: TxtIdDetalle.value,
+                //Compra: txtCompra.value,
+                Producto: Txtproducto.value,
+                Precio: Txtprecio.value,
+                Cantidad: Txtcantidad.value,
+                Medida: Txtmedida.value,
+                Subtotal: txtsubtotal.value,
+                IVA: Txtiva.value,
+                Total: Txttotal.value
+            }
+            DetallesCompra.push(Objdetalle);
+            DetallesCompra.forEach((objeto) => {
+                CreateTable(DetallesCompra, TableCD, objeto)
+            })
+        }
+        else {
+            encontrarId.Producto = Txtproducto;
+            encontrarId.Cantidad = Txtcantidad;
+            encontrarId.Precio = Txtprecio;
+            encontrarId.Medida = Txtmedida;
+            encontrarId.SubTotal = txtsubtotal;
+            encontrarId.Iva = Txtiva;
+            encontrarId.Total = Txttotal;
+        }
+
+        console.log(DetallesCompra)
+        Txtproducto.value = ""
+        Txtcantidad.value = ""
+        Txtprecio.value = ""
+        Txtiva.value = ""
+        txtsubtotal.value = ""
+        Txttotal.value = ""
     }
 
+
+
+    //SALVAR COMPRA
     window.onload = async () => {
-        //BtnSave.onclick = async () => {
-        //    const ObjInst = {
-        //        //IdCompra: TxtIdProveedor.value,
-        //        Descripcion: Txtdescripcion.value,
-        //        Fecha: Txtfecha.value,
-        //        Proveedor: DropProveedor.value,
-        //        Usuario: DropUsuario.value,
-        //        Estado: DropEstado.value,
-        //       // DetallesCompra=Detalle
+        BtnSave.onclick = async () => {
+            let UrlCompra = "../api/Compra/GuardarCompra";
+            const ObjInst = {
+                IdCompra: TxtCompra.value,
+                Fecha: Txtfecha.value,
+                Descripcion: Txtdescripcion.value,
+                Proveedor: DropProveedor.value,
+                Estado: DropEstado.value,
+                Detalles: DetallesCompra
 
+            }
 
-        //    }
-        //    let Url = "../api/Proveedor/InsertarProveedores";
-        //    let response = await fetch(Url, {
-        //        method: "POST",
-        //        headers: {
-        //            'Content-Type': "application/json; charset=utf-8",
-        //            'Accept': "*/*"
-        //        },
-        //        body: JSON.stringify(ObjInst)
-        //    });
-        //    response = await response.json();
-        //    if (response == true) {
-        //        alert("Datos Guardados");
-        //        CargarDatos();
-        //    }
-        //}
+            let response = await fetch(UrlCompra, {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json; charset=utf-8",
+                    'Accept': "*/*"
+                },
+                body: JSON.stringify(ObjInst)
+            });
+            response = await response.json();
+            if (response == true) {
+                alert("Datos Guardados");
+                CargarDatos();
+            }
+
+            DropProveedor.value = 0;
+            // DropUsuario.value = 0;
+            Txtdescripcion.value = ""
+            //DetallesCompra.length = 0
+
+        }
         CargarDatos();
-        BtnModalDetalles.onclick = () => {
-            ModalFunction(ModalDetalles);
+        BtnModalProducto.onclick = () => {
+            ModalFunction(ModalProducto);
+        }
+        BtnCerrarProducto.onclick = () => {
+            ModalFunction(ModalProducto);
         }
 
-        BtnCerrar.onclick = () => {
-            ModalFunction(ModalDetalles);
-        }
 
-    }
+    } //aqui termina insertar compraa
+
+
 </script>
 
-<div class="buscar">
-
-    <input type="number" id="TxtBusqueda" value="" placeholder="Buscar" />
-</div>
 <div class="FrmContainer">
 
     <div hidden="true">
         IdCompra:
-        <input class="TxtForm" type="number" id="Txtidproveedor" placeholder="Propiedad..." />
+        <input class="TxtForm" type="number" id="TxtCompra" placeholder="Propiedad..." value="-1" />
     </div>
     <div>
         Fecha:
@@ -89,31 +189,82 @@
         Descripcion:
         <input class="TxtForm" type="text" id="Txtdescripcion" placeholder="Propiedad..." />
     </div>
-    <div>
-        Usuario:
-        <select class="TxtForm" id="DropUsuario">
-            <option value="0">Seleccionar Usuario</option>
-        </select>
-    </div>
+
     <div>
         Proveedor:
         <select class="TxtForm" id="DropProveedor">
             <option value="0">Seleccionar Proveedor</option>
         </select>
     </div>
+
     <div>
         Estado:
         <select class="TxtForm" id="DropEstado">
-            <option value="0">Seleccionar estado</option>
+            <option value="1">Activo</option>
+            <option value="2">Inactivo</option>
         </select>
     </div>
 </div>
+
+<div class="FrmContainer">
+    <div hidden="true">
+        IdDetalleCompra:
+        <input class="TxtForm" type="number" id="TxtIdDetalle" placeholder="Propiedad..." value="-1" />
+    </div>
+    <div style="display:flex; flex-direction:row; flex-wrap:wrap; height:30%">
+        <div>
+            Producto:
+            <input class="TxtForm" type="number" id="Txtproducto" placeholder="Producto" disabled />
+        </div>
+        <input type="button" id="BtnModalProducto" value="+"
+               style="margin-top: 40px; background-color: forestgreen; color: white; width: 10%; height: 80%; margin-left: 30px; cursor: pointer; border: none; font-weight: 100; outline: none;" />
+    </div>
+
+    <div>
+        Cantidad:
+        <input class="TxtForm" type="number" id="Txtcantidad" placeholder="Propiedad..." />
+    </div>
+
+    <div>
+        Medida:
+        <input class="TxtForm" type="text" id="Txtmedida" placeholder="Propiedad..." value="DOCENAS" disabled />
+    </div>
+
+    <div>
+        Precio:
+        <input class="TxtForm" type="number" id="Txtprecio" placeholder="Propiedad..." />
+    </div>
+
+    <div>
+        Subtotal:
+        <input class="TxtForm" type="number" id="txtsubtotal" placeholder="Propiedad..." />
+    </div>
+
+    <div>
+        IVA:
+        <input class="TxtForm" type="number" id="Txtiva" placeholder="Propiedad..." />
+    </div>
+
+    <div>
+        Total:
+        <input class="TxtForm" type="number" id="Txttotal" placeholder="Propiedad..." />
+    </div>
+
+    <div>
+        <input type="button" class="BTN BTNOK2" id="BtnSaveD" value="Guardar Detalles" style="margin:25px" />
+
+    </div>
+</div>
+
+
 <div class="FrmContainer">
     <div>
         <input class="BTN BTNOK2" type="button" id="BtnSave" value="Guardar" />
-        <input class="BTN BTNOK2" type="button" id="BtnModalDetalles" value="Insertar Detalle" />
+
     </div>
 </div>
+
+@*Creacion de tablas*@
 
 <table id="TableData" class="FrmTable">
     <thead>
@@ -122,60 +273,37 @@
     </tbody>
 </table>
 
-<div id="ModalDetalles" class="ModalContent">
-    <div class="FrmContainer" id="ContainerForm">
+@*TABLA PARA LA DETALLECOMPRA*@
+<table id="TableDetalle" class="FrmTable" hidden="true">
+    <thead>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
 
-        <div hidden="true">
-            IdDetalleCompra:
-            <input class="TxtForm" type="number" id="Txtidproveedor" placeholder="Propiedad..." />
-        </div>
-        <div>
-            Compra:
-            <input class="TxtForm" type="number" id="Txtfecha" placeholder="Propiedad..." />
-        </div>
-        <div>
-            Producto:
-            <select class="TxtForm" id="DropProducto">
-                <option value="0">Seleccionar Producto</option>
-            </select>
-        </div>
+@*TABLA PARA WUE INSERTA DETALLE*@
+<table id="TableCD" class="FrmTable">
+    <thead>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
 
-        <div>
-            Cantidad:
-            <input class="TxtForm" type="text" id="Txtdescripcion" placeholder="Propiedad..." />
-        </div>
+@*TABLA PARA EL MODAL*@
+<div class="ModalContent" id="ModalProducto">
+    <div class="ContainerForm" style="width:max-content">
+        @*<input type="text" id="TxtBusquedaProducto" placeholder="Buscar..." value="" />*@
+        <table id="TableProducto" class="FrmTable">
+            <thead>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
 
-        <div>
-            Medida:
-            <input class="TxtForm" type="text" id="Txtmedida" placeholder="Propiedad..." />
-        </div>
-
-        <div>
-            Precio:
-            <input class="TxtForm" type="number" id="Txtprecio" placeholder="Propiedad..." />
-        </div>
-
-        <div>
-            Subtotal:
-            <input class="TxtForm" type="number" id="Txtsubtotal" placeholder="Propiedad..." />
-        </div>
-
-        <div>
-            IVA:
-            <input class="TxtForm" type="number" id="Txtiva" placeholder="Propiedad..." />
-        </div>
-
-        <div>
-            Total:
-            <input class="TxtForm" type="number" id="Txttotal" placeholder="Propiedad..." />
-        </div>
-
-    </div>
-    <div class="FrmContainer">
-        <div>
-            <input class="BTN BTNOK2" type="button" id="BtnSaveD" value="Guardar" />
-            <input class="BTN BTNOK2" type="button" id="BtnCerrar" value="Cerrar" />
+        <div class="FrmContainer">
+            <div>
+                <input class="BTN BTNOK2" type="button" id="BtnCerrarProducto" value="Cerrar" />
+            </div>
         </div>
     </div>
-
 </div>
