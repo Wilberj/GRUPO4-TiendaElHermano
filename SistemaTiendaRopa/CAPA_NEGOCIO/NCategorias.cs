@@ -10,7 +10,7 @@ namespace CAPA_NEGOCIO
     public class NCategorias
     {
         private string TableName = "CATEGORIA";
-        public  int IdCategoria { get; set; }
+        public int IdCategoria { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public int Estado { get; set; }
@@ -21,7 +21,15 @@ namespace CAPA_NEGOCIO
             try
             {
                 SqlADOConexion.IniciarConexion("sa", "1234");
-                return SqlADOConexion.SQLM.InsertObject(TableName, Inst);
+                if (Inst.IdCategoria == -1)
+                {
+                    return SqlADOConexion.SQLM.InsertObject(TableName, Inst);
+                }
+                else
+                {
+                    return SqlADOConexion.SQLM.UpdateObject(TableName, Inst, "IdCategoria");
+                }
+               
             }
             catch (Exception)
             {

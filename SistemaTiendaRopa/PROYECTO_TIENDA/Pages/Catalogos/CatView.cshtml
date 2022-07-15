@@ -18,14 +18,15 @@
         CreateTable(response, TableData, FunctionEdit);
     }
     const FunctionEdit = async (Item) => {
+        TxtIdCategoria.value = Item.idCategoria;
         TxtNombre.value = Item.nombre;
-        DropEstado.value = Item.estado;
         TxtDescripcion.value = Item.descripcion;
+        DropEstado.value = Item.estado;
     }
     window.onload = async () => {
         BtnSave.onclick = async () => {
             const ObjInst = {
-                txtIdCategoria: '',
+                IdCategoria: TxtIdCategoria.value,
                 Nombre: TxtNombre.value,
                 Descripcion: TxtDescripcion.value,
                 Estado: DropEstado.value
@@ -43,7 +44,8 @@
             if (response == true) {
                 alert("Datos Guardados");
                 CargarDatos();
-                IdCategoria.value = "";
+                TxtIdCategoria.value = "-1";
+                TxtNombre.value = "";
                 TxtDescripcion.value = "";
             }
         }
@@ -55,7 +57,7 @@
 <div class="FrmContainer">
     <div hidden = "true">
         IdCategoria:
-        <input class="TxtForm" type="number" id="TxtIdCategoria" value="" />
+        <input class="TxtForm" type="number" id="TxtIdCategoria" value="-1" />
     </div>
     <div>
         Nombre:

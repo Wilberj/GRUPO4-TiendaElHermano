@@ -9,7 +9,7 @@ body {
 }
 
 .header {
-    background-color: #081037;
+    background-color: #04AA6D;
     color: #fff;
     font-size: 18px;
     font-weight: bold;
@@ -293,7 +293,7 @@ a {
     padding-bottom: 50px;
 }
 
-#ContainerForm {
+.ContainerForm {
     display: block;
     overflow: hidden;
     margin: auto;
@@ -306,4 +306,17 @@ a {
     min-height: 20px;
     position: relative;
     border-radius: 5px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.fondo {
+    width: 30%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 }

@@ -454,19 +454,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Martha\\.nuget\\packages\\": {}
+    "C:\\Users\\Isabel Aguilar\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Martha\\Desktop\\GRUPO4-TiendaElHermano\\SistemaTiendaRopa\\CAPA_DATOS\\CAPA_DATOS.csproj",
+      "projectUniqueName": "C:\\Repos\\GRUPO4-TiendaElHermano\\SistemaTiendaRopa\\CAPA_DATOS\\CAPA_DATOS.csproj",
       "projectName": "CAPA_DATOS",
-      "projectPath": "C:\\Users\\Martha\\Desktop\\GRUPO4-TiendaElHermano\\SistemaTiendaRopa\\CAPA_DATOS\\CAPA_DATOS.csproj",
-      "packagesPath": "C:\\Users\\Martha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Martha\\Desktop\\GRUPO4-TiendaElHermano\\SistemaTiendaRopa\\CAPA_DATOS\\obj\\",
+      "projectPath": "C:\\Repos\\GRUPO4-TiendaElHermano\\SistemaTiendaRopa\\CAPA_DATOS\\CAPA_DATOS.csproj",
+      "packagesPath": "C:\\Users\\Isabel Aguilar\\.nuget\\packages\\",
+      "outputPath": "C:\\Repos\\GRUPO4-TiendaElHermano\\SistemaTiendaRopa\\CAPA_DATOS\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Martha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Isabel Aguilar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

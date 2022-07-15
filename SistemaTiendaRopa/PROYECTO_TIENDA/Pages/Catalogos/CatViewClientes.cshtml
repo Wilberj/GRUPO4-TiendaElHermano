@@ -15,11 +15,23 @@
         });
         response = await response.json();
         console.log(response);
-        CreateTable(response, TableData);
+        CreateTable(response, TableData, FunctionEdit);
+    }
+    const FunctionEdit = async (Item) => {
+        TxtIdCliente.value = Item.idCliente;
+        DropIdTipoDocumento.value = Item.idTipoDocumento;
+        TxtNombres.value = Item.nombres;
+        TxtApellidos.value = Item.apellidos;
+        TxtSexo.value = Item.sexo;
+        TxtCelular.value = Item.celular;
+        TxtDireccion.value = Item.direccion;
+        TxtCorreo.value = Item.correo;
+        DropEstado.value = Item.estado;
     }
     window.onload = async () => {
         BtnSave.onclick = async () => {
             const ObjInst = {
+                IdCliente: TxtIdCliente.value,
                 IdTipoDocumento: DropIdTipoDocumento.value,
                 Nombres: TxtNombres.value,
                 Apellidos: TxtApellidos.value,
@@ -42,6 +54,13 @@
             if (response == true) {
                 alert("Datos Guardados");
                 CargarDatos();
+                TxtIdCliente.value = "-1";
+                TxtNombres.value = "";
+                TxtApellidos.value = "";
+                TxtSexo.value = "";
+                TxtCelular.value = "";
+                TxtDireccion.value = "";
+                TxtCorreo.value = "";
             }
         }
         //Cargar Categorias
@@ -50,9 +69,13 @@
 </script>
 
 <div class="FrmContainer">
+    <div hidden="true">
+        Id Cliente:
+        <input class="TxtForm" type="number" id="TxtIdCliente" value="-1" />
+    </div>
     <div>
         TipoDocumento:
-        <select class="TxtForm" id="DropIdTipoDocumento">
+        <select class="TxtForm minimal" id="DropIdTipoDocumento">
             <option value=1>Cedula</option>
             <option value=2>Residencia</option>
             <option value=3>RUC</option>
@@ -84,7 +107,7 @@
     </div>
     <div>
         Estado:
-        <select class="TxtForm" id="DropEstado">
+        <select class="TxtForm minimal" id="DropEstado">
             <option value=1>Activo</option>
             <option value=2>Inactivo</option>
         </select>

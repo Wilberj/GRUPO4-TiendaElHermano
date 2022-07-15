@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+=======
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\bin\Debug\net5.0\CAPA_NEGOCIO.deps.json
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\bin\Debug\net5.0\CAPA_NEGOCIO.dll
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\bin\Debug\net5.0\ref\CAPA_NEGOCIO.dll
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\bin\Debug\net5.0\CAPA_NEGOCIO.pdb
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\bin\Debug\net5.0\CAPA_DATOS.dll
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\bin\Debug\net5.0\CAPA_DATOS.pdb
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\obj\Debug\net5.0\CAPA_NEGOCIO.csproj.AssemblyReference.cache
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\obj\Debug\net5.0\CAPA_NEGOCIO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\obj\Debug\net5.0\CAPA_NEGOCIO.AssemblyInfoInputs.cache
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\obj\Debug\net5.0\CAPA_NEGOCIO.AssemblyInfo.cs
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\obj\Debug\net5.0\CAPA_NEGOCIO.csproj.CoreCompileInputs.cache
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\obj\Debug\net5.0\CAPA_NEGOCIO.csproj.CopyComplete
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\obj\Debug\net5.0\CAPA_NEGOCIO.dll
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\obj\Debug\net5.0\ref\CAPA_NEGOCIO.dll
+C:\Users\Martha\Desktop\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\obj\Debug\net5.0\CAPA_NEGOCIO.pdb
+>>>>>>> 6a109dd9748777e86418cf39e90ceb6ddf83464c
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\bin\Debug\net5.0\CAPA_NEGOCIO.deps.json
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\bin\Debug\net5.0\CAPA_NEGOCIO.dll
 C:\Repos\GRUPO4-TiendaElHermano\SistemaTiendaRopa\CAPA_NEGOCIO\bin\Debug\net5.0\ref\CAPA_NEGOCIO.dll
