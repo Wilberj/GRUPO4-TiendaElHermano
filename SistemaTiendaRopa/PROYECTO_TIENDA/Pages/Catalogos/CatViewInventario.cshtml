@@ -15,22 +15,29 @@
                 'Accept': "*/*"
             }
         });
+
         response = await response.json();
         console.log(response);
+        //CARGA INVENTARIO
         CreateTable(response[0], TableData, FunctionEdit);
+
+        //CARGA PRODUCTO -MODAL
         Producto = response[1]
         CreateTable(Producto, TableProducto, FunctionSeleccionar, "Seleccionar");
+
+        //TEXTO BUSQUEDA
         TxtBusquedaProducto.onchange = (ev) => {
             const parametro = ev.target.value;
-            const ProductosFiltrados = Producto.filter(x => x.nombre.includes(parametro));
+            const ProductosFiltrados = Producto.filter(x => x.nombreProducto.includes(parametro));
             CreateTable(ProductosFiltrados, TableProducto, FunctionSeleccionar, "Seleccionar");
-
         }
-        //CreateDropDown(response[1], DropProducto, "idProducto", "nombreProducto");
+
         CreateDropDown(response[2], DropMarca, "idMarca", "marca");
         CreateDropDown(response[3], DropTalla, "idTalla", "talla");
 
     }
+
+    //AGREDAR PRODUCTO DE MODAL A INPUT
     const FunctionSeleccionar = async (Item) => {
         console.log(Item)
         TxtProducto.value = Item.idProducto;
@@ -38,9 +45,8 @@
     }
     const FunctionEdit = async (Item) => {
         TxtIdInventario.value = Item.idInventario;
-        //DropProducto.value = Item.producto;
         TxtProducto.value = Item.producto;
-        TxtDateTime.value = FormatoFechaEditar(Item.fecha);
+        TxtDateTime.value = Item.fecha;
         DropMarca.value = Item.marca;
         DropTalla.value = Item.talla;
         TxtPrecioCompra.value = Item.precioCompra;
@@ -54,7 +60,7 @@
             const ObjInst = {
                 IdInventario: TxtIdInventario.value,
                 Producto: TxtProducto.value,
-                Fecha: FormatoFechaGuardar(TxtDateTime.value),
+                Fecha: TxtDateTime.value,
                 Marca: DropMarca.value,
                 Talla: DropTalla.value,
                 PrecioCompra: TxtPrecioCompra.value,
@@ -109,7 +115,7 @@
     </div>
     <div>
         Producto:
-        <input class="TxtForm" type="text" id="TxtProducto" placeholder="Propiedad..." disabled />
+        <input class="TxtForm" type="text" id="TxtProducto" placeholder="Propiedad..." disabled/>
     </div>
     <div>
         Fecha:
@@ -129,11 +135,11 @@
     </div>
     <div>
         PrecioCompra:
-        <input class="TxtForm" type="text" id="TxtPrecioCompra" placeholder="Propiedad..." />
+        <input class="TxtForm" type="number" id="TxtPrecioCompra" placeholder="Propiedad..." />
     </div>
     <div>
         Unidad de medida:
-        <input class="TxtForm" type="text" id="TxtMedida" value="DOCENAS" disabled />
+        <input class="TxtForm" type="text" id="TxtMedida" placeholder="Propiedad..." value="DOCENAS"/>
     </div>
     <div>
         Stock minimo:
@@ -160,6 +166,8 @@
     <tbody>
     </tbody>
 </table>
+
+
 <div class="ModalContent" id="ModalProducto">
     <div class="ContainerForm">
         <input type="text" id="TxtBusquedaProducto" placeholder="Buscar..." value="" />
